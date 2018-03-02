@@ -115,58 +115,46 @@ $startOfLoop$3:
 
   00038	03 d1		 add	 edx, ecx
 
-; 58   : 		mov al,byte ptr[edx]		// move the byte at the index(ecx) into al
+; 58   : 		xor byte ptr[edx],0xFF		// xor data at index ecx with all 1's (0xFF)
 
-  0003a	8a 02		 mov	 al, BYTE PTR [edx]
+  0003a	80 32 ff	 xor	 BYTE PTR [edx], -1
 
-; 59   : 		test al,al					// check if al is null
+; 59   : 		inc ecx						// increment ecx(index)
 
-  0003c	84 c0		 test	 al, al
+  0003d	41		 inc	 ecx
 
-; 60   : 		je done						// jump out of loop if al is null
+; 60   : 		cmp ecx,dataLength			// check if ecx is lower than dataLength
 
-  0003e	74 08		 je	 SHORT $done$4
+  0003e	3b 4d 0c	 cmp	 ecx, DWORD PTR _dataLength$[ebp]
 
-; 61   : 		xor al,0xFF					// xor al with all 1's
+; 61   : 		jb startOfLoop				// jump to startOfLoop if ecx is lower than dataLength
 
-  00040	34 ff		 xor	 al, -1
-
-; 62   : 		inc ecx						// increment ecx(index)
-
-  00042	41		 inc	 ecx
-
-; 63   : 		cmp ecx,dataLength			// check if ecx is lower than dataLength
-
-  00043	3b 4d 0c	 cmp	 ecx, DWORD PTR _dataLength$[ebp]
-
-; 64   : 		jb startOfLoop				// jump to startOfLoop if ecx is lower than dataLength
-
-  00046	72 ed		 jb	 SHORT $startOfLoop$3
+  00041	72 f2		 jb	 SHORT $startOfLoop$3
 $done$4:
 
-; 65   : 	done:
-; 66   : 		nop
+; 62   : 	done:
+; 63   : 		nop
 
-  00048	90		 npad	 1
+  00043	90		 npad	 1
 
-; 67   : 	}
-; 68   : 
-; 69   : 	return resulti;
+; 64   : 	}
+; 65   : 
+; 66   : 	return resulti;
 
-  00049	8b 45 f8	 mov	 eax, DWORD PTR _resulti$[ebp]
+  00044	8b 45 f8	 mov	 eax, DWORD PTR _resulti$[ebp]
 
-; 70   : } // encryptData
+; 67   : } // encryptData
 
-  0004c	5f		 pop	 edi
-  0004d	5e		 pop	 esi
-  0004e	5b		 pop	 ebx
-  0004f	81 c4 cc 00 00
+  00047	5f		 pop	 edi
+  00048	5e		 pop	 esi
+  00049	5b		 pop	 ebx
+  0004a	81 c4 cc 00 00
 	00		 add	 esp, 204		; 000000ccH
-  00055	3b ec		 cmp	 ebp, esp
-  00057	e8 00 00 00 00	 call	 __RTC_CheckEsp
-  0005c	8b e5		 mov	 esp, ebp
-  0005e	5d		 pop	 ebp
-  0005f	c3		 ret	 0
+  00050	3b ec		 cmp	 ebp, esp
+  00052	e8 00 00 00 00	 call	 __RTC_CheckEsp
+  00057	8b e5		 mov	 esp, ebp
+  00059	5d		 pop	 ebp
+  0005a	c3		 ret	 0
 ?encryptData@@YAHPADH@Z ENDP				; encryptData
 _TEXT	ENDS
 END
