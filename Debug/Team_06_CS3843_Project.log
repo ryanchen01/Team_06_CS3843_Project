@@ -1,14 +1,10 @@
-﻿Build started 2/20/2018 9:27:26 PM.
+﻿Build started 3/1/2018 9:20:30 PM.
      1>Project "C:\Users\chenj\OneDrive\Documents\Visual Studio 2013\Projects\Team_06_CS3843_Project\Team_06_CS3843_Project\Team_06_CS3843_Project.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W2 /WX- /sdl /Od /Oy- /D _MBCS /D _MBCS /D _CRT_SECURE_NO_WARNINGS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /FAcs /Fa"Debug\\" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt CryptoMain_Initial.cpp DecryptData_Initial.cpp EncryptData_Initial.cpp "SHA-256.cpp"
-         SHA-256.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W2 /WX- /sdl /Od /Oy- /D _MBCS /D _MBCS /D _CRT_SECURE_NO_WARNINGS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /FAcs /Fa"Debug\\" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt DecryptData_Initial.cpp EncryptData_Initial.cpp
          EncryptData_Initial.cpp
          DecryptData_Initial.cpp
-         CryptoMain_Initial.cpp
          Generating Code...
-     1>c:\users\chenj\onedrive\documents\visual studio 2013\projects\team_06_cs3843_project\team_06_cs3843_project\cryptomain_initial.cpp(113): warning C4731: 'exCountLetters' : frame pointer register 'ebp' modified by inline assembly code
-     1>c:\users\chenj\onedrive\documents\visual studio 2013\projects\team_06_cs3843_project\team_06_cs3843_project\cryptomain_initial.cpp(122): warning C4731: 'exCountLetters' : frame pointer register 'ebp' modified by inline assembly code
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\chenj\OneDrive\Documents\Visual Studio 2013\Projects\Team_06_CS3843_Project\Debug\Team_06_CS3843_Project.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\chenj\OneDrive\Documents\Visual Studio 2013\Projects\Team_06_CS3843_Project\Debug\Team_06_CS3843_Project.pdb" /TLBID:1 /DYNAMICBASE:NO /NXCOMPAT /IMPLIB:"C:\Users\chenj\OneDrive\Documents\Visual Studio 2013\Projects\Team_06_CS3843_Project\Debug\Team_06_CS3843_Project.lib" /MACHINE:X86 Debug\CryptoMain_Initial.obj
          Debug\DecryptData_Initial.obj
@@ -19,4 +15,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.22
+Time Elapsed 00:00:02.27

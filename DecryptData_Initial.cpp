@@ -23,7 +23,7 @@ int decryptData(char *data, int dataLength)
 		// you will need to reference some of these global variables
 		// (gptrPasswordHash or gPasswordHash), (gptrKey or gkey), gNumRounds
 
-		// simple example that xors 2nd byte of data with 14th byte in the key file
+		/* simple example that xors 2nd byte of data with 14th byte in the key file
 		lea esi,gkey				// put the ADDRESS of gkey into esi
 		mov esi,gptrKey;			// put the ADDRESS of gkey into esi (since *gptrKey = gkey)
 
@@ -48,6 +48,22 @@ int decryptData(char *data, int dataLength)
 		xor byte ptr [edi+1],al		// Exclusive-or the 2nd byte of data with the 14th element of the keyfile
 									// NOTE: Keyfile[14] = 0x21, that value changes the case of a letter and flips the LSB
 									// Lowercase "c" = 0x63 becomes capital "B" since 0x63 xor 0x21 = 0x42
+		*/
+
+
+		xor ecx, ecx				// reset ecx to 0
+	startOfLoop :
+		mov edx, data				// moves the address of data into edx
+		add edx, ecx				// add ecx(index) to edx
+		mov al, byte ptr[edx]		// move the byte at the index(ecx) into al
+		test al, al					// check if al is null
+		je done						// jump out of loop if al is null
+		xor al, 0xFF				// xor al with all 1's
+		inc ecx						// increment ecx(index)
+		cmp ecx, dataLength			// check if ecx is lower than dataLength
+		jb startOfLoop				// jump to startOfLoop if ecx is lower than dataLength
+	done :
+		nop
 	}
 
 	return resulti;
