@@ -115,9 +115,9 @@ $startOfLoop$3:
 
   00038	03 d1		 add	 edx, ecx
 
-; 58   : 		xor byte ptr[edx],0xFF		// xor data at index ecx with all 1's (0xFF)
+; 58   : 		xor byte ptr[edx],0x1		// xor data at index ecx with a 1 (0x1)
 
-  0003a	80 32 ff	 xor	 BYTE PTR [edx], -1
+  0003a	80 32 01	 xor	 BYTE PTR [edx], 1
 
 ; 59   : 		inc ecx						// increment ecx(index)
 

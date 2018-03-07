@@ -55,7 +55,7 @@ int encryptData(char *data, int dataLength)
 	startOfLoop:
 		mov edx,data				// moves the address of data into edx
 		add edx,ecx					// add ecx(index) to edx
-		xor byte ptr[edx],0xFF		// xor data at index ecx with all 1's (0xFF)
+		xor byte ptr[edx],0x1		// xor data at index ecx with a 1 (0x1)
 		inc ecx						// increment ecx(index)
 		cmp ecx,dataLength			// check if ecx is lower than dataLength
 		jb startOfLoop				// jump to startOfLoop if ecx is lower than dataLength
