@@ -63,6 +63,7 @@ int encryptData(char *data, int dataLength)
 		xor eax,eax					// reset eax to 0
 		mov al, byte ptr[edx]		// get ecx-th byte into al
 		xor bl,bl					// clear bl
+		xor cl,cl					//
 		mov cl,8					// 
 	RLOOP:							// loop to put the reveresed al into bl
 		rcr al,1
