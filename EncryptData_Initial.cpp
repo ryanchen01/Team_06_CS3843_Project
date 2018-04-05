@@ -59,7 +59,7 @@ int encryptData(char *data, int dataLength)
 		xor byte ptr[edx],0x1		// xor data at index ecx with a 1 (0x1)
 		*/
 		
-		//D - start
+		//C - start
 		xor eax,eax					// reset eax to 0
 		mov al, byte ptr[edx]		// get ecx-th byte into al
 		xor bl,bl					// clear bl
@@ -70,7 +70,40 @@ int encryptData(char *data, int dataLength)
 		rcl bl,1
 		loop RLOOP
 		mov byte ptr[edx],bl		//move the reversed byte into the data
+		//C - end
+
+		//D - start
+		xor eax, eax				// reset eax to 0
+		mov al, byte ptr[edx]		// get ecx-th byte into al
+		rol ax
+		rol ax
+		rol ax
+		rol ax
+		test ah,8
+		jz bit4_is_zero
+		rol ah
+		or ah,1
+		and ah,0xEF
+		jmp doneah
+	bit4_is_zero:
+		rol ah
+	doneah:
+		test al,16
+		jz bit5_is_zero
+		ror al
+		or al,0x80
+		and al,0x8
+		jmp doneal
+	bit5_is_zero:
+		ror al
+	doneal:
+		ror ax
+		ror ax
+		ror ax
+		ror ax
+		mov byte ptr[edx],al
 		//D - end
+
 		inc ebx						// increment ecx(index)
 		cmp ebx,dataLength			// check if ecx is lower than dataLength
 		jb startOfLoop				// jump to startOfLoop if ecx is lower than dataLength
